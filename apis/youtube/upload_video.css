@@ -8,7 +8,10 @@
   margin-left: 0.2em;
   margin-right: 0.2em;
 }
-
+.upload-form-fields{
+  /* width: 510px !important; */
+  width: -webkit-fill-available !important;
+}
 #disclaimer {
   font-size: 0.75em;
   color: #aeaeae;

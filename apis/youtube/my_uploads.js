@@ -58,7 +58,9 @@ function displayResult(videoSnippet) {
   console.log(videoSnippet);
   var title = videoSnippet.title;
   var videoId = videoSnippet.resourceId.videoId;
-  $('#video-container').append('<p>' + title + ' - ' + videoId + '</p>');
+  var image= videoSnippet.thumbnails.default.url;
+
+  $('#video-container').append("<tr style='background:bisque;'><td><img style='width: -webkit-fill-available;' src='"+image+"'></img></td><td style='width:85%;'><a href='https://www.youtube.com/watch?v="+videoId+"'>"+title+"</a></td></tr><br>");
 }
 
 // Retrieve the next page of videos in the playlist.
