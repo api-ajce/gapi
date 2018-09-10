@@ -10,6 +10,9 @@ body{
   margin:0 !important;
 
 }
+.noview{
+  visibility: hidden;
+}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{
   display:block
 }
