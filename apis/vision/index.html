@@ -15,7 +15,7 @@
 
   <link href="../../assets/favicon.ico" rel="icon">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <title>Google APIs : Translate</title>
+  <title>Google APIs : Cloud-Vision</title>
 
   <link href="../../main.550dcf66.css" rel="stylesheet"></head>
   <!-- Adding oh-autoVal css style -->
@@ -26,7 +26,6 @@
   <!-- Adding oh-autoVal script file -->
   <script src="https://rawgit.com/ozonhub/oh-autoVal/master/js/oh-autoval-script.js"></script>
 
-  <script src="translate.js"></script>
 
   <style>
   .oh-autoval-error{
@@ -50,7 +49,7 @@
             </button>
             <a class="navbar-brand" href="./" title="">
               <img src="../../assets/images/mashup-icon.svg" class="navbar-logo-img" alt="">
-              Google APIs : Translate
+              Google APIs : Cloud-Vision
             </a>
           </div>
 
@@ -73,7 +72,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <h1>Google APIs : Translate</h1>
+            <h1>Google APIs : Cloud-Vision</h1>
             <p>Demo for Students - Amal Jyothi College of Engineering, Kanjirapally </p>
 <a href="https://github.com/api-ajce/gapi" class="btn btn-default" title=""><i class="fa fa-github fa-2x" style="font-size:24px;"aria-hidden="true">    Get on Github</i></a>
             <br>
@@ -88,54 +87,82 @@
           <div class="col-md-12" style="text-align:-webkit-center">
 
             <!-- Put your code here... (body contents) -->
-
+            <button id="authorize_button" style="display: none;">Authorize</button>
+            <button id="signout_button" style="display: none;">Sign Out</button>
+            <div class="col-md-6" style="display: none;" id="cv_form">
+              <h2>Request Form</h2>
+              <select id="cv_type">
+                <option value="LANDMARK_DETECTION">LANDMARK_DETECTION</option>
+                <option value="TYPE_UNSPECIFIED">TYPE_UNSPECIFIED</option>
+                <option value="FACE_DETECTION">FACE_DETECTION</option>
+                <option value="LOGO_DETECTION">LOGO_DETECTION</option>
+                <option value="LABEL_DETECTION">LABEL_DETECTION</option>
+                <option value="TEXT_DETECTION">TEXT_DETECTION</option>
+                <option value="SAFE_SEARCH_DETECTION">SAFE_SEARCH_DETECTION</option>
+                <option value="IMAGE_PROPERTIES">IMAGE_PROPERTIES</option>
+              </select><br /><br>
+              <input type="text" id="cv_image" placeholder="Image URL"><br /><br />
+              <button  id="cv_submit" onclick="getResult()">Submit</button>
             </div>
+            <div id="cv_response" class="col-md-6" style="display: none;">
+              <h2>Response</h2>
+              <p id="cv_result"></p>
+            </div>
+            <script src="cloudvision.js"></script>
+
+
+            <script async defer src="https://apis.google.com/js/api.js"
+            onload="this.onload=function(){};handleClientLoad()"
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+            </script>
+
           </div>
         </div>
       </div>
+    </div>
 
 
-      <div>
-        <script>
-        document.addEventListener("DOMContentLoaded", function (event) {
-          navbarFixedTopAnimation();
-        });
-        </script>
+    <div>
+      <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+        navbarFixedTopAnimation();
+      });
+      </script>
 
-        <footer class="footer-container white-text-container">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12">
-                <h3>Google APIs</h3>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-7">
-                    <p><small>Translate</small></p>
-                  </div>
-                  <div class="col-xs-12 col-sm-5"></div>
+      <footer class="footer-container white-text-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <h3>Google APIs</h3>
+              <div class="row">
+                <div class="col-xs-12 col-sm-7">
+                  <p><small>Cloud-Vision</small></p>
                 </div>
+                <div class="col-xs-12 col-sm-5"></div>
               </div>
             </div>
           </div>
-        </footer>
+        </div>
+      </footer>
 
-        <script>
-        document.addEventListener("DOMContentLoaded", function (event) {
-          navActivePage();
-          scrollRevelation('.reveal');
-        });
-        </script>
-
-
-        <!-- <script async defer src="https://apis.google.com/js/api.js"
-        onload="this.onload=function(){};handleClientLoad()"
-        onreadystatechange="if (this.readyState === 'complete') this.onload()">
-      </script> -->
-      <!-- <script src="upload.js"></script> -->
       <script>
-      $(document).ready(function () {
-        $('div[style*="position: fixed;z-index:9999999;bottom: 0; width: 100%;cursor: pointer;line-height: 0;"]').remove()
-      })
+      document.addEventListener("DOMContentLoaded", function (event) {
+        navActivePage();
+        scrollRevelation('.reveal');
+      });
       </script>
-      <script type="text/javascript" src="../../main.0cf8b554.js"></script><div style='text-align: right;position: fixed;z-index:9999999;bottom: 0; width: 100%;cursor: pointer;line-height: 0;display:block !important;'><a title="000webhost logo" rel="nofollow" target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&amp;utm_campaign=000_logo&amp;utm_campaign=ss-footer_logo&amp;utm_medium=000_logo&amp;utm_content=website"><img src="https://cdn.rawgit.com/000webhost/logo/e9bd13f7/footer-powered-by-000webhost-white2.png" alt="000webhost logo"></a></div></body>
 
-      </html>
+
+      <!-- <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script> -->
+    <!-- <script src="upload.js"></script> -->
+    <script>
+    $(document).ready(function () {
+      $('div[style*="position: fixed;z-index:9999999;bottom: 0; width: 100%;cursor: pointer;line-height: 0;"]').remove()
+    })
+    </script>
+    <script type="text/javascript" src="../../main.0cf8b554.js"></script><div style='text-align: right;position: fixed;z-index:9999999;bottom: 0; width: 100%;cursor: pointer;line-height: 0;display:block !important;'><a title="000webhost logo" rel="nofollow" target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&amp;utm_campaign=000_logo&amp;utm_campaign=ss-footer_logo&amp;utm_medium=000_logo&amp;utm_content=website"><img src="https://cdn.rawgit.com/000webhost/logo/e9bd13f7/footer-powered-by-000webhost-white2.png" alt="000webhost logo"></a></div></body>
+
+    </html>
