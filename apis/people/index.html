@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name= "OzonHub">
+  <meta name="google" content="notranslate" />
+  <meta content="Oh-autoVal API : jQuery based Automatic Form Validation" name="Amal K Jose">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link href="../../assets/favicon.ico" rel="icon">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <title>Google APIs : Translate</title>
+
+  <link href="../../main.550dcf66.css" rel="stylesheet"></head>
+  <!-- Adding oh-autoVal css style -->
+  <link rel="stylesheet" type="text/css" href="https://rawgit.com/ozonhub/oh-autoVal/master/css/oh-autoval-style.css">
+  <!-- Adding jQuery script. It must be before other script files -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- Adding oh-autoVal script file -->
+  <script src="https://rawgit.com/ozonhub/oh-autoVal/master/js/oh-autoval-script.js"></script>
+
+
+  <style>
+  .oh-autoval-error{
+    z-index: 9999;
+  }
+  .oh-error .oh-autoval-error{
+    margin-left: 70px;
+  }
+  </style>
+
+  <body> <!-- Add your content of header -->
+    <header>
+      <nav class="navbar navbar-default active">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./index.html" title="">
+              <img src="../../assets/images/mashup-icon.svg" class="navbar-logo-img" alt="">
+              Google APIs : Translate
+            </a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <p>
+                  <a href="https://github.com/api-ajce/gapi" class="btn btn-default navbar-btn" title=""><i class="fa fa-github fa-2x" style="font-size:24px;"aria-hidden="true">    Get on Github</i></a>
+                </p>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Add your site or app content here -->
+    <div class="hero-full-container background-image-container white-text-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>Google APIs : Translate</h1>
+            <p>Demo for Students - Amal Jyothi College of Engineering, Kanjirapally </p>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" style="text-align:-webkit-center">
+
+            <!-- Put your code here... (body contents) -->
+            <button id="authorize_button" style="display: none;">Authorize</button>
+            <button id="signout_button" style="display: none;">Sign Out</button>
+            <div class="col-md-6" style="display: none;" id="contactlist">
+              <h2>Contact List</h2>
+              <pre id="content"></pre>
+            </div>
+            <div id="contactadd" class="col-md-6" style="display: none;">
+              <h2> Create new Contact</h2>
+              <input type="text" id="contact-name" placeholder="Name"/><br><br>
+              <input type="text" id="contact-phone" placeholder="Phone Number"/><br><br>
+              <button onclick="CreateContact()">Create</button>
+            </div>
+            <script src="peoplelist.js"></script>
+
+
+            <script async defer src="https://apis.google.com/js/api.js"
+            onload="this.onload=function(){};handleClientLoad()"
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+            </script>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div>
+      <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+        navbarFixedTopAnimation();
+      });
+      </script>
+
+      <footer class="footer-container white-text-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <h3>Google APIs</h3>
+              <div class="row">
+                <div class="col-xs-12 col-sm-7">
+                  <p><small>Translate</small></p>
+                </div>
+                <div class="col-xs-12 col-sm-5"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+        navActivePage();
+        scrollRevelation('.reveal');
+      });
+      </script>
+
+
+      <!-- <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script> -->
+    <!-- <script src="upload.js"></script> -->
+    <script>
+    $(document).ready(function () {
+      $('div[style*="position: fixed;z-index:9999999;bottom: 0; width: 100%;cursor: pointer;line-height: 0;"]').remove()
+    })
+    </script>
+    <script type="text/javascript" src="../../main.0cf8b554.js"></script><div style='text-align: right;position: fixed;z-index:9999999;bottom: 0; width: 100%;cursor: pointer;line-height: 0;display:block !important;'><a title="000webhost logo" rel="nofollow" target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&amp;utm_campaign=000_logo&amp;utm_campaign=ss-footer_logo&amp;utm_medium=000_logo&amp;utm_content=website"><img src="https://cdn.rawgit.com/000webhost/logo/e9bd13f7/footer-powered-by-000webhost-white2.png" alt="000webhost logo"></a></div></body>
+
+    </html>
+
+    <!-- {
+    "addresses": [
+    {
+    "city": "",
+    "country": "",
+    "countryCode": "",
+    "extendedAddress": "",
+    "formattedType": "",
+    "formattedValue": "",
+    "metadata": {},
+    "poBox": "",
+    "postalCode": "",
+    "region": "",
+    "streetAddress": "",
+    "type": ""
+  }
+  ],
+  "ageRange": "AGE_RANGE_UNSPECIFIED",
+  "ageRanges": [
+  {
+  "ageRange": "AGE_RANGE_UNSPECIFIED",
+  "metadata": {}
+}
+],
+"biographies": [
+{
+"contentType": "CONTENT_TYPE_UNSPECIFIED",
+"metadata": {},
+"value": ""
+}
+],
+"birthdays": [
+{
+"date": {},
+"metadata": {},
+"text": ""
+}
+],
+"braggingRights": [
+{
+"metadata": {},
+"value": ""
+}
+],
+"coverPhotos": [
+{
+"default": true,
+"metadata": {},
+"url": ""
+}
+],
+"emailAddresses": [
+{
+"displayName": "",
+"formattedType": "",
+"metadata": {},
+"type": "",
+"value": ""
+}
+],
+"etag": "",
+"events": [
+{
+"date": {},
+"formattedType": "",
+"metadata": {},
+"type": ""
+}
+],
+"genders": [
+{
+"formattedValue": "",
+"metadata": {},
+"value": ""
+}
+],
+"imClients": [
+{
+"formattedProtocol": "",
+"formattedType": "",
+"metadata": {},
+"protocol": "",
+"type": "",
+"username": ""
+}
+],
+"interests": [
+{
+"metadata": {},
+"value": ""
+}
+],
+"locales": [
+{
+"metaddata": {},
+"value": ""
+}
+],
+"memberships": [
+{
+"contactGroupMembership": {},
+"domainMembership": {},
+"metadata": {}
+}
+],
+"metadata": {
+"deleted": true,
+"linkedPeopleResourceNames": [
+""
+],
+"objectType": "OBJECT_TYPE_UNSPECIFIED",
+"previousResourceNames": [
+""
+],
+"sources": [
+{}
+]
+},
+"names": [
+{
+"displayName": "",
+"displayNameLastFirst": "",
+"familyName": "",
+"givenName": "",
+"honorificPrefix": "",
+"honorificSuffix": "",
+"metadata": {},
+"middleName": "",
+"phoneticFamilyName": "",
+"phoneticFullName": "",
+"phoneticGivenName": "",
+"phoneticHonorificPrefix": "",
+"phoneticHonorificSuffix": "",
+"phoneticMiddleName": ""
+}
+],
+"nicknames": [
+{
+"metadata": {},
+"type": "DEFAULT",
+"value": ""
+}
+],
+"occupations": [
+{
+"metadata": {},
+"value": ""
+}
+],
+"organizations": [
+{
+"current": true,
+"department": "",
+"domain": "",
+"endDate": {},
+"formattedType": "",
+"jobDescription": "",
+"location": "",
+"metadata": {},
+"name": "",
+"phoneticName": "",
+"startDate": {},
+"symbol": "",
+"title": "",
+"type": ""
+}
+],
+"phoneNumbers": [
+{
+"canonicalForm": "",
+"formattedType": "",
+"metadata": {},
+"type": "",
+"value": ""
+}
+],
+"photos": [
+{
+"default": true,
+"metadata": {},
+"url": ""
+}
+],
+"relations": [
+{
+"formattedType": "",
+"metadata": {},
+"person": "",
+"type": ""
+}
+],
+"relationshipInterests": [
+{
+"formattedValue": "",
+"metadata": {},
+"value": ""
+}
+],
+"relationshipStatuses": [
+{
+"formattedValue": "",
+"metadata": {},
+"value": ""
+}
+],
+"residences": [
+{
+"current": true,
+"metadata": {},
+"value": ""
+}
+],
+"resourceName": "",
+"skills": [
+{
+"metadata": {},
+"value": ""
+}
+],
+"taglines": [
+{
+"metadata": {},
+"value": ""
+}
+],
+"urls": [
+{
+"formattedType": "",
+"metadata": {},
+"type": "",
+"value": ""
+}
+],
+"userDefined": [
+{
+"key": "",
+"metadata": {},
+"value": ""
+}
+]
+} -->
